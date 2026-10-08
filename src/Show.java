@@ -17,11 +17,6 @@ public class Show {
 
     public void addActor(Actor newActor) {
         for (Actor actor : listOfActors) {
-//            if (actor.getName().equals(newActor.getName()) && actor.getSurname().equals(newActor.getSurname())
-//                    && actor.getHeight() == newActor.getHeight()) {
-//                System.out.println("Такой актёр уже участвует в спектакле.");
-//                return;
-//            }
             if (actor.equals(newActor)) {
                 System.out.println("Такой актёр уже участвует в спектакле.");
                 return;
@@ -38,7 +33,7 @@ public class Show {
 
     public void changeActor(Actor actor, String surnameForChange) {
         for (int i = 0; i < listOfActors.size(); i++) {
-            if (Objects.equals(listOfActors.get(i).getSurname(), surnameForChange)) {
+            if (Objects.equals(listOfActors.get(i).surname, surnameForChange)) {
                 listOfActors.set(i, actor);
                 return;
             }

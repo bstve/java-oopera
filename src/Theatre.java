@@ -1,10 +1,7 @@
 import java.util.ArrayList;
-//import java.util.Scanner;
 
 public class Theatre {
-
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
         ArrayList<Actor> showActors = new ArrayList<>();
         ArrayList<Actor> operaActors = new ArrayList<>();
         ArrayList<Actor> balletActors = new ArrayList<>();
@@ -14,6 +11,10 @@ public class Theatre {
 
         Director director1 = new Director("Василий", "Иванов", Gender.MALE, 24);
         Director director2 = new Director("Анна", "Седых", Gender.FEMALE, 19);
+
+        Person operaMusicAuthor = new Person("Джузеппе", "Верди", Gender.MALE);
+        Person balletMusicAuthor = new Person("Пётр", "Чайковский", Gender.MALE);
+        Person choreographer = new Person("Мариус", "Петипа", Gender.MALE);
 
         String operaLibrettoText = "Куртизанка Виолетта Валери влюбляется в молодого Альфреда Жермона. \n" +
                 "Ради него она оставляет прежнюю жизнь, но под давлением его отца вынуждена расстаться с\n" +
@@ -27,13 +28,13 @@ public class Theatre {
                 165,
                 director2,
                 operaActors,
-                "Джузеппе Верди",
+                operaMusicAuthor,
                 operaLibrettoText, 40);
         Ballet ballet = new Ballet("Лебединое озеро",
                 150,
                 director2,
-                balletActors, "Пётр Ильич Чайковский",
-                balletLibrettoText, "Мариус Петипа");
+                balletActors, balletMusicAuthor,
+                balletLibrettoText, choreographer);
 
 
         show.addActor(actor1);
@@ -58,12 +59,12 @@ public class Theatre {
         ballet.printActorList();
         System.out.println("__________");
 
-        opera.changeActor(actor3, actor1.getSurname());
+        opera.changeActor(actor3, actor1.surname);
         System.out.println("Новый состав актеров оперы:");
         opera.printActorList();
         System.out.println("__________");
 
-        ballet.changeActor(actor2, actor1.getSurname());
+        ballet.changeActor(actor2, actor1.surname);
         System.out.println("__________");
 
         System.out.println("Текст либретто оперы:");
@@ -73,71 +74,4 @@ public class Theatre {
         ballet.printLibretto();
 
     }
-
 }
-//        while (true) {
-//            printMenu();
-//            String commandValue = scanner.nextLine();
-//            int command;
-//            if (commandValue.isEmpty()) {
-//                System.out.println("Повторите ввод");
-//            } else {
-//                command = Integer.parseInt(commandValue);
-//                switch (command) {
-//                    case 1:
-//                        Actor newActor = createActor(scanner);
-//                        show.addActor(newActor);
-//                        break;
-//                    case 2:
-//                        show.printActorList();
-//                        break;
-//                    case 3:
-//                        System.out.println("Кем вы хотите заменить одного из актёров?");
-//                        Actor actorForCnange = createActor(scanner);
-//                        System.out.println("Введите фамилию актёра, которого требуется заменить");
-//                        String surnameForChange = scanner.nextLine();
-//                        show.changeActor(actorForCnange, surnameForChange);
-//                        break;
-//                    case 4:
-//                        musicalShow.printLibretto();
-//                        break;
-//                    case 5:
-//                        System.out.println(show.getDirector());
-//                }
-//            }
-//        }
-//    }
-
-//    public static void printMenu() {
-//        System.out.println("Введите команду");
-//        System.out.println("1 - Добавить актера");
-//        System.out.println("2 - Распечатать список актеров");
-//        System.out.println("3 - Заменить актёра");
-//        System.out.println("4 - Распечатать текст либретто.");
-//        System.out.println("5 - Распечатать информацию о режиссёре спектакля");
-//    }
-
-//    public static Actor createActor(Scanner scanner) {
-//        System.out.println("Введите имя актёра");
-//        String actorName = scanner.nextLine();
-//        System.out.println("Введите фамилию актера");
-//        String actorSurname = scanner.nextLine();
-//        Gender gender;
-//        while (true) {
-//            System.out.println("Введите пол актера в формате 'Мужской' или 'Женский'");
-//            String actorGender = scanner.nextLine();
-//
-//            if (actorGender.equals("Мужской")) {
-//                gender = Gender.MALE;
-//                break;
-//            } else if (actorGender.equals("Женский")) {
-//                gender = Gender.FEMALE;
-//                break;
-//            } else {
-//                System.out.println("Пол актёра может быть в формате 'Мужской' или 'Женский'");
-//            }
-//        }
-//        System.out.println("Введите рост актера в сантиметрах");
-//        int actorHeight = Integer.parseInt(scanner.nextLine());
-//        return new Actor(actorName, actorSurname, gender, actorHeight);
-//    }
